@@ -11,8 +11,12 @@ func main() {
 
 	models.ConnectDatabase()
 
-	// TODO: how to simplify config for many endpoints?
+	// TODO: how to simplify config for many endpoints? Group routing!
 	r.GET("/games", controllers.FindGames)
+	r.GET("/games/:id", controllers.FindGame)
+	r.POST("/games", controllers.CreateGame)
+	r.PATCH("/games/:id", controllers.UpdateGame)
+	r.DELETE("/games/:id", controllers.DeleteGame)
 
 	r.Run()
 }
